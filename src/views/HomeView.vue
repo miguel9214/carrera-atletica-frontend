@@ -1,68 +1,46 @@
 <template>
-  <div class="home-hero text-white d-flex align-items-center justify-content-center text-center">
+  <!-- Hero con fondo -->
+  <div class="home-hero d-flex align-items-center text-white text-center">
     <div class="container py-5">
-      <h1 class="display-4 fw-bold mb-3">Carrera Atlética</h1>
-      <p class="lead mb-4">¡Animate y participa! <br />13 de septiembre 2025</p>
+      <h1 class="display-4 fw-bold mb-3">Carrera Atlética Morrocoyera</h1>
+      <p class="lead mb-4">¡Aguachica vibra con el deporte!<br />13 de septiembre 2025</p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
-        <RouterLink to="/register" class="btn btn-primary btn-lg">
-          ¡Inscríbete ahora!
-        </RouterLink>
-        <RouterLink to="/kit" class="btn btn-outline-light btn-lg">
-          Ver Kit del Corredor
-        </RouterLink>
+        <RouterLink to="/register" class="btn btn-lg hero-btn">¡Inscríbete ahora!</RouterLink>
+        <RouterLink to="/kit" class="btn btn-outline-light btn-lg">Ver Kit del Corredor</RouterLink>
       </div>
     </div>
   </div>
 
+  <!-- Cuenta regresiva -->
   <div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card text-center shadow-sm border-0">
-        <div class="card-body py-4">
-          <h4 class="fw-bold mb-3" style="color: var(--color-dark)">
-            Cuenta regresiva para la gran carrera
-          </h4>
-          <div class="display-6 fw-semibold" style="color: var(--color-primary)">
-            {{ countdown.days }}d : {{ countdown.hours }}h : {{ countdown.minutes }}m : {{ countdown.seconds }}s
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card text-center shadow-sm border-0 countdown-card">
+          <div class="card-body py-4">
+            <h4 class="fw-bold mb-3" style="color: var(--color-dark)">Cuenta regresiva para la gran carrera</h4>
+            <div class="display-6 fw-semibold countdown-text">
+              {{ countdown.days }}d : {{ countdown.hours }}h : {{ countdown.minutes }}m : {{ countdown.seconds }}s
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-
+  <!-- Beneficios -->
   <div class="container text-center my-5">
-    <h2 class="mb-4 fw-bold" style="color: var(--color-dark)">¡Vive la emoción de correr con propósito!</h2>
+    <h2 class="mb-4 fw-bold" style="color: var(--color-primary)">¡Vive la emoción de correr con propósito!</h2>
     <p class="lead mb-5">
-      Acompáñanos en una jornada deportiva llena de alegría, salud y comunidad. ¡Corre, comparte y gana!
+      Acompáñanos en una jornada llena de alegría, salud y comunidad. ¡Corre, comparte y gana!
     </p>
 
     <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0">
+      <div class="col-md-4" v-for="item in benefits" :key="item.title">
+        <div class="card h-100 shadow-sm benefit-card border-0" :style="{ borderTop: '5px solid ' + item.color }">
           <div class="card-body">
-            <i class="bi bi-geo-alt-fill display-4 text-primary mb-3"></i>
-            <h5 class="fw-bold">Ruta Segura</h5>
-            <p class="text-muted">Recorrido señalizado, hidratación y asistencia en todo el trayecto.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0">
-          <div class="card-body">
-            <i class="bi bi-award display-4 text-success mb-3"></i>
-            <h5 class="fw-bold">Premios y Medallas</h5>
-            <p class="text-muted">Trofeos y premios para ganadores. Medallas para todos los participantes.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0">
-          <div class="card-body">
-            <i class="bi bi-heart-fill display-4 text-danger mb-3"></i>
-            <h5 class="fw-bold">Ambiente Familiar</h5>
-            <p class="text-muted">Un evento para todas las edades. ¡Corre, camina o apoya desde la orilla!</p>
+            <i :class="item.icon" class="display-4 mb-3" :style="{ color: item.color }"></i>
+            <h5 class="fw-bold">{{ item.title }}</h5>
+            <p class="text-muted">{{ item.desc }}</p>
           </div>
         </div>
       </div>
@@ -71,18 +49,10 @@
 </template>
 
 <script setup>
-
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-const countdown = ref({
-  days: '00',
-  hours: '00',
-  minutes: '00',
-  seconds: '00',
-})
-
+const countdown = ref({ days: '00', hours: '00', minutes: '00', seconds: '00' })
 const eventDate = new Date('2025-09-13T00:00:00')
-
 let interval = null
 
 function updateCountdown() {
@@ -112,11 +82,28 @@ onMounted(() => {
   updateCountdown()
   interval = setInterval(updateCountdown, 1000)
 })
+onBeforeUnmount(() => clearInterval(interval))
 
-onBeforeUnmount(() => {
-  clearInterval(interval)
-})
-
+const benefits = [
+  {
+    title: 'Ruta Segura',
+    desc: 'Recorrido señalizado, hidratación y asistencia en todo el trayecto.',
+    icon: 'bi bi-geo-alt-fill',
+    color: 'var(--color-accent)',
+  },
+  {
+    title: 'Premios y Medallas',
+    desc: 'Trofeos para ganadores. Medallas para todos los participantes.',
+    icon: 'bi bi-award',
+    color: 'var(--color-orange)',
+  },
+  {
+    title: 'Ambiente Familiar',
+    desc: 'Un evento para todas las edades. ¡Corre, camina o apoya desde la orilla!',
+    icon: 'bi bi-heart-fill',
+    color: 'var(--color-primary)',
+  },
+]
 </script>
 
 <style scoped>
@@ -126,11 +113,44 @@ onBeforeUnmount(() => {
       rgba(0, 0, 0, 0.6)
     ),
     url('/banner.jpg') center center / cover no-repeat;
-  min-height:99vh;
+  min-height: 85vh;
+  animation: fadeIn 1s ease;
 }
 
-.display-6 {
+.hero-btn {
+  background-color: var(--color-primary);
+  border: none;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+.hero-btn:hover {
+  background-color: var(--color-magenta);
+}
+
+.countdown-card {
+  border-left: 5px solid var(--color-primary);
+  background-color: var(--color-light);
+}
+.countdown-text {
+  color: var(--color-dark);
   font-variant-numeric: tabular-nums;
 }
 
+.benefit-card {
+  transition: transform 0.3s ease;
+}
+.benefit-card:hover {
+  transform: scale(1.03);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>
