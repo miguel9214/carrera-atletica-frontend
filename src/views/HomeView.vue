@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
       rgba(0, 0, 0, 0.6)
     ),
     url('/banner.jpg') center center / cover no-repeat;
-  min-height: 80vh;
+  min-height:99vh;
 }
 
 .display-6 {
