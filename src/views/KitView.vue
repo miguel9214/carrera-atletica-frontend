@@ -3,7 +3,7 @@
     <div class="text-center mb-5">
       <h2 class="fw-bold" style="color: var(--color-primary)">Kit del Participante</h2>
       <p class="lead text-muted">
-        Todo lo que necesitas para vivir la experiencia Morrocoyera. Calidad, utilidad y estilo en un solo paquete.
+        Todo lo que necesitas para vivir la experiencia atletica. Calidad, utilidad y estilo en un solo paquete.
       </p>
     </div>
 

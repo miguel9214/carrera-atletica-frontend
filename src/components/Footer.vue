@@ -17,7 +17,7 @@
             <a href="https://instagram.com/tu_cuenta" target="_blank" class="footer-icon" title="Instagram">
               <i class="bi bi-instagram"></i>
             </a>
-            <a href="mailto:carrera@morrocoyera.com" class="footer-icon" title="Correo">
+            <a href="mailto:carrera@.com" class="footer-icon" title="Correo">
               <i class="bi bi-envelope-fill"></i>
             </a>
           </div>

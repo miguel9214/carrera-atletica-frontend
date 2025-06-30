@@ -2,7 +2,7 @@
   <!-- Hero con fondo -->
   <div class="home-hero d-flex align-items-center text-white text-center">
     <div class="container py-5">
-      <h1 class="display-4 fw-bold mb-3">Carrera Atlética Morrocoyera</h1>
+      <h1 class="display-4 fw-bold mb-3">Carrera Atlética</h1>
       <p class="lead mb-4">¡Aguachica vibra con el deporte!<br />13 de septiembre 2025</p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
         <RouterLink to="/register" class="btn btn-lg hero-btn">¡Inscríbete ahora!</RouterLink>
