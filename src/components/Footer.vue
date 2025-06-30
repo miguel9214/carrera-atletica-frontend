@@ -39,10 +39,6 @@
           </div>
         </div>
       </div>
-
-      <div class="text-center mt-2">
-        <small class="text">© {{ year }} Carrera atletica. Todos los derechos reservados.</small>
-      </div>
     </div>
   </footer>
 </template>
