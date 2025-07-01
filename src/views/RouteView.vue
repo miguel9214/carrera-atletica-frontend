@@ -66,8 +66,8 @@
             <i class="bi bi-flag-fill fs-3"></i>
           </div>
           <h5 class="fw-bold">Salida</h5>
-          <p class="text-muted mb-0">Parque Principal de Aguachica</p>
-          <small class="text-muted">Hora: 6:30 a.m.</small>
+          <p class="text-muted mb-0">Calle 5ta Con Carrera 25</p>
+          <small class="text-muted">Hora: 2:30 p.m.</small>
         </div>
 
         <div class="card border-0 shadow-sm p-4 bg-light text-center">
@@ -75,7 +75,7 @@
             <i class="bi bi-geo-alt-fill fs-3"></i>
           </div>
           <h5 class="fw-bold">Llegada</h5>
-          <p class="text-muted mb-0">Frente al Coliseo Cubierto</p>
+          <p class="text-muted mb-0">Calle 5ta Con Carrera 25</p>
           <small class="text-muted">Premiación al finalizar la carrera</small>
         </div>
       </div>
