@@ -1,11 +1,50 @@
 <template>
-  <!-- Mapa en pantalla completa -->
+  <!-- Imagen de la Ruta -->
   <div class="w-100 vh-100 position-relative">
-    <div class="map-container w-100 h-100 bg-light d-flex align-items-center justify-content-center">
-      <div class="text-center">
-        <i class="bi bi-map display-1 text-muted"></i>
-        <p class="text-muted">Aquí se mostrará el mapa del recorrido</p>
-        <small class="text-muted">*Disponible próximamente</small>
+    <div
+      class="map-image w-100 h-100"
+      style="background-image: url('/ruta.jpg');"
+    ></div>
+
+    <!-- Botón para ampliar imagen -->
+    <div class="position-absolute bottom-0 end-0 m-3">
+      <button
+        class="btn btn-light btn-sm shadow"
+        data-bs-toggle="modal"
+        data-bs-target="#mapModal"
+      >
+        Ver en pantalla completa
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal fullscreen -->
+  <div
+    class="modal fade"
+    id="mapModal"
+    tabindex="-1"
+    aria-labelledby="mapModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content bg-dark">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white">Mapa del recorrido</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal"
+            aria-label="Cerrar"
+          ></button>
+        </div>
+        <div class="modal-body d-flex justify-content-center align-items-center">
+          <img
+            src="/ruta.jpg"
+            alt="Mapa del recorrido"
+            class="img-fluid rounded shadow"
+            style="max-height: 90vh;"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -55,8 +94,11 @@
 </script>
 
 <style scoped>
-.map-container {
-  background: linear-gradient(135deg, #f3f4f6, #e9ecef);
+.map-image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f8f9fa;
 }
 .icon-circle {
   width: 60px;

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer-split text-white">
+  <footer class="footer-split text-white mt-auto">
     <div class="container py-3">
       <div class="row align-items-center">
         <!-- Info del evento -->
@@ -28,7 +28,6 @@
 </template>
 
 <script setup>
-const year = new Date().getFullYear()
 </script>
 
 <style scoped>
@@ -36,6 +35,7 @@ const year = new Date().getFullYear()
   background: linear-gradient(90deg, var(--color-dark), var(--color-primary));
   font-size: 0.85rem;
   color: white;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .footer-icon {

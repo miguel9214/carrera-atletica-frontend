@@ -1,14 +1,13 @@
 <template>
   <div class="container py-5">
     <div class="text-center mb-5">
-      <h2 class="fw-bold" style="color: var(--color-primary)">Inscríbete a la Carrera atletica</h2>
+      <h2 class="fw-bold" style="color: var(--color-primary)">Inscríbete a la Carrera atlética</h2>
       <p class="text-muted">Completa el formulario para participar. ¡Corre, comparte y gana!</p>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-lg-9">
-        <div class="card p-4 shadow-sm border-0"
-          style="background-color: var(--color-light); border-left: 6px solid var(--color-primary)">
+        <div class="card p-4 shadow-sm border-0" style="background-color: var(--color-light); border-left: 6px solid var(--color-primary)">
           <form @submit.prevent="handleSubmit">
             <div class="row g-4">
               <div class="col-md-6">
@@ -43,17 +42,21 @@
 
               <div class="col-md-6">
                 <label class="form-label">Categoría</label>
-                <select v-model="form.categoria" @change="actualizarCondiciones" class="form-select form-select-lg"
-                  required>
+                <select v-model="form.categoria" class="form-select form-select-lg" required>
                   <option disabled value="">Selecciona una categoría</option>
-                  <option value="Recreativa - 3km">Recreativa - 3 km (gratis)</option>
-                  <option value="Juvenil - 5km">Juvenil - 5 km</option>
-                  <option value="Élite - 10km">Élite - 10 km</option>
-                  <option value="Élite - 21km">Élite - 21 km</option>
-                  <option value="Máster - 10km">Máster - 10 km</option>
-                  <option value="Máster - 21km">Máster - 21 km</option>
+                  <option>Infantil</option>
+                  <option>Prejuvenil</option>
+                  <option>Juvenil</option>
+                  <option>Élite Hombres</option>
+                  <option>Élite Mujeres</option>
+                  <option>Senior A (Hombres)</option>
+                  <option>Senior B (Hombres)</option>
+                  <option>Senior C (Hombres)</option>
+                  <option>Senior A (Mujer)</option>
+                  <option>Senior B (Mujer)</option>
+                  <option>Senior C (Mujer)</option>
+                  <option>Personas con discapacidad</option>
                 </select>
-
               </div>
 
               <div class="col-md-6">
@@ -67,29 +70,19 @@
                   <option>XL</option>
                 </select>
               </div>
-
-              <!-- Solo si es recreativa -->
-              <div v-if="esRecreativa" class="col-md-6">
-                <label class="form-label">¿Deseas comprar el kit?</label>
-                <select v-model="form.quiereKit" class="form-select form-select-lg">
-                  <option :value="true">Sí, quiero el kit</option>
-                  <option :value="false">No, solo participaré</option>
-                </select>
-              </div>
             </div>
 
             <!-- TOTAL -->
             <div class="total-box mt-4 text-end">
-              <span class="badge fs-5 rounded-pill px-4 py-2"
-                :style="{ backgroundColor: 'var(--color-accent)', color: '#fff' }">
+              <span class="badge fs-5 rounded-pill px-4 py-2" :style="{ backgroundColor: 'var(--color-accent)', color: '#fff' }">
                 Total: ${{ precioTotal.toLocaleString() }}
               </span>
             </div>
 
             <!-- BOTÓN FINAL -->
             <div class="mt-4 text-end">
-              <button type="submit" class="btn btn-lg" :class="esInscripcionGratis ? 'btn-success' : 'btn-gradient'">
-                {{ esInscripcionGratis ? 'Finalizar inscripción' : 'Continuar con el pago' }}
+              <button type="submit" class="btn btn-lg btn-gradient">
+                Continuar con la inscripción
               </button>
             </div>
           </form>
@@ -111,29 +104,17 @@ const form = reactive({
   genero: '',
   categoria: '',
   talla: '',
-  quiereKit: true,
 })
 
-const precios = {
-  base: 40000,
-  kit: 20000,
-}
-
-const esRecreativa = computed(() => form.categoria.startsWith('Recreativa'))
-const esInscripcionGratis = computed(() => esRecreativa.value && !form.quiereKit)
+const categoriasGratis = ['Infantil', 'Prejuvenil']
 
 const precioTotal = computed(() => {
   if (!form.categoria) return 0
-  if (esRecreativa.value) return form.quiereKit ? precios.kit : 0
-  return precios.base
+  return categoriasGratis.includes(form.categoria) ? 0 : 40000
 })
 
-function actualizarCondiciones() {
-  form.quiereKit = form.categoria === 'Recreativa'
-}
-
 function handleSubmit() {
-  if (esInscripcionGratis.value) {
+  if (precioTotal.value === 0) {
     Swal.fire({
       icon: 'success',
       title: '¡Inscripción completada!',
