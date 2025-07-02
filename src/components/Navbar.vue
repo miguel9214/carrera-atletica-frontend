@@ -6,17 +6,16 @@
         <span class="text-white">Carrera atletica</span>
       </RouterLink>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<button
+  class="navbar-toggler"
+  type="button"
+  aria-controls="navbarNav"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+  @click="closeMenu"
+>
+  <span class="navbar-toggler-icon"></span>
+</button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto text-uppercase">
@@ -44,11 +43,16 @@ const routes = [
 
 function closeMenu() {
   const menu = document.getElementById('navbarNav')
-  if (menu && menu.classList.contains('show')) {
-    new Collapse(menu).hide()
+  const bsCollapse = Collapse.getInstance(menu) || new Collapse(menu, { toggle: false })
+
+  if (menu.classList.contains('show')) {
+    bsCollapse.hide()
+  } else {
+    bsCollapse.show()
   }
 }
 </script>
+
 
 <style scoped>
 .nav-custom {
