@@ -3,7 +3,15 @@
   <div class="home-hero d-flex align-items-center text-white text-center">
     <div class="container py-5">
       <h1 class="display-4 fw-bold mb-3">Carrera Atlética</h1>
-      <p class="lead mb-4">¡Aguachica vibra con el deporte!<br />13 de septiembre 2025</p>
+      <p class="lead mb-4">
+        La carrera atlética <strong style="color: var(--color-primary)">“CONQUISTA LA NOCHE”</strong> por la
+        <strong>paz</strong>, la <strong>seguridad</strong> y la <strong>convivencia</strong>, promete ser sin lugar a
+        dudas una experiencia inolvidable en nuestra ciudad. <br />
+        Será una noche <strong>histórica</strong> que busca renacer con <strong>deporte</strong> y
+        <strong>esperanza</strong>.<br />
+        <span class="text-muted">13 de septiembre 2025</span>
+      </p>
+
       <div class="d-flex flex-wrap justify-content-center gap-3">
         <RouterLink to="/register" class="btn btn-lg hero-btn">¡Inscríbete ahora!</RouterLink>
         <RouterLink to="/kit" class="btn btn-outline-light btn-lg">Ver Kit del Corredor</RouterLink>
@@ -108,10 +116,8 @@ const benefits = [
 
 <style scoped>
 .home-hero {
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
+  background: linear-gradient(rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)),
     url('/banner.jpg') center center / cover no-repeat;
   min-height: 85vh;
   animation: fadeIn 1s ease;
@@ -123,6 +129,7 @@ const benefits = [
   color: white;
   transition: all 0.3s ease-in-out;
 }
+
 .hero-btn:hover {
   background-color: var(--color-magenta);
 }
@@ -131,6 +138,7 @@ const benefits = [
   border-left: 5px solid var(--color-primary);
   background-color: var(--color-light);
 }
+
 .countdown-text {
   color: var(--color-dark);
   font-variant-numeric: tabular-nums;
@@ -139,6 +147,7 @@ const benefits = [
 .benefit-card {
   transition: transform 0.3s ease;
 }
+
 .benefit-card:hover {
   transform: scale(1.03);
 }
@@ -148,6 +157,7 @@ const benefits = [
     opacity: 0;
     transform: translateY(15px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
