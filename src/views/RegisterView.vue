@@ -17,7 +17,12 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Documento de identidad</label>
-                <input v-model="form.documento" type="number" class="form-control form-control-lg" required />
+                <input v-model="form.documento"
+                       type="text"
+                       class="form-control form-control-lg"
+                       @keypress="isNumber($event)"
+                       inputmode="numeric"
+                       required />
               </div>
 
               <div class="col-md-6">
@@ -84,7 +89,7 @@
             <!-- Botón -->
             <div class="mt-4 text-end">
               <button type="submit" class="btn btn-lg btn-gradient">
-                {{ precioTotal === 0 ? 'Finalizar inscripción' : 'Continuar con el pago' }}
+                {{ precioTotal.value === 0 ? 'Finalizar inscripción' : 'Continuar con el pago' }}
               </button>
             </div>
           </form>
@@ -122,10 +127,7 @@ const categorias = [
 
 // Watch date of birth to calculate age
 watch(() => form.fechaNacimiento, (val) => {
-  if (!val) {
-    form.edad = null
-    return
-  }
+  if (!val) { form.edad = null; return }
   const hoy = new Date(), nac = new Date(val)
   let edad = hoy.getFullYear() - nac.getFullYear()
   const m = hoy.getMonth() - nac.getMonth()
@@ -145,7 +147,13 @@ function validateCategory() {
   }
 }
 
-// Price: free for Infantil y Prejuvenil
+// Validate numeric input for documento
+function isNumber(event) {
+  const char = String.fromCharCode(event.keyCode)
+  if (!/^[0-9]$/.test(char)) event.preventDefault()
+}
+
+// Price: free for Infantil and Prejuvenil
 const precioTotal = computed(() => {
   if (!form.categoria) return 0
   return ['Infantil','Prejuvenil'].includes(form.categoria) ? 0 : 40000
@@ -158,7 +166,6 @@ function handleSubmit() {
   } else {
     Swal.fire({ icon:'info', title:'Redirigiendo a pago...', text:`Total a pagar: $${precioTotal.value.toLocaleString()}`, timer:2000, showConfirmButton:false })
   }
-  // Luego conectar con API o pasarela
 }
 </script>
 
