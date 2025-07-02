@@ -17,7 +17,7 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Documento de identidad</label>
-                <input v-model="form.documento" type="text" class="form-control form-control-lg" required />
+                <input v-model="form.documento" type="number" class="form-control form-control-lg" required />
               </div>
 
               <div class="col-md-6">
