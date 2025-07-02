@@ -1,20 +1,28 @@
 <template>
   <div class="app-wrapper d-flex flex-column min-vh-100">
-    <Navbar />
+    <!-- Sólo muestro el Navbar si la ruta NO es de guest -->
+    <Navbar v-if="!isGuestRoute" />
 
     <main class="flex-fill">
       <RouterView />
     </main>
 
+    <!-- Sólo muestro el Footer si la ruta NO es de guest -->
     <Transition name="fade-slide" appear>
-      <Footer />
+      <Footer v-if="!isGuestRoute" />
     </Transition>
   </div>
 </template>
 
 <script setup>
-import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
+
+// Detecto si la ruta actual tiene meta.guest = true
+const route = useRoute()
+const isGuestRoute = computed(() => !!route.meta.guest)
 </script>
 
 <style scoped>
