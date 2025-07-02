@@ -3,14 +3,21 @@
   <div class="home-hero d-flex align-items-center text-white text-center">
     <div class="container py-5">
       <h1 class="display-4 fw-bold mb-3">Carrera Atlética</h1>
-      <p class="lead mb-4">
-        La carrera atlética <strong style="color: var(--color-primary)">“CONQUISTA LA NOCHE”</strong> por la
-        <strong>paz</strong>, la <strong>seguridad</strong> y la <strong>convivencia</strong>, promete ser sin lugar a
-        dudas una experiencia inolvidable en nuestra ciudad. <br />
-        Será una noche <strong>histórica</strong> que busca renacer con <strong>deporte</strong> y
-        <strong>esperanza</strong>.<br />
-        <span class="text-muted">13 de septiembre 2025</span>
-      </p>
+
+        <!-- Sección destacada -->
+  <section class="highlight-section py-5">
+    <div class="container">
+      <div class="card shadow-lg p-4 border-0 text-center animate__animated animate__fadeInUp highlight-card">
+        <h2 class="gradient-text fw-bold mb-3">CONQUISTA LA NOCHE</h2>
+        <p class="fs-5">
+          La carrera atlética por la <strong>PAZ</strong>, la <strong>SEGURIDAD</strong> y la <strong>CONVIVENCIA</strong>
+          será una noche <strong>HISTÓRICA</strong> para Aguachica.<br />
+          Vive una experiencia inolvidable con <strong>DEPORTE</strong> y <strong>ESPERANZA</strong>.<br />
+          <span class="fw-semibold text-muted"><i class="bi bi-calendar-event me-2"></i>13 de septiembre 2025</span>
+        </p>
+      </div>
+    </div>
+  </section>
 
       <div class="d-flex flex-wrap justify-content-center gap-3">
         <RouterLink to="/register" class="btn btn-lg hero-btn">¡Inscríbete ahora!</RouterLink>
@@ -115,12 +122,13 @@ const benefits = [
 </script>
 
 <style scoped>
+@import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
+
 .home-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)),
-    url('/banner.jpg') center center / cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/banner.jpg') center center / cover no-repeat;
   min-height: 85vh;
   animation: fadeIn 1s ease;
+  color: white;
 }
 
 .hero-btn {
@@ -132,6 +140,18 @@ const benefits = [
 
 .hero-btn:hover {
   background-color: var(--color-magenta);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .countdown-card {
@@ -152,12 +172,19 @@ const benefits = [
   transform: scale(1.03);
 }
 
+.highlight-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(6px);
+  border: 1px solid #e0e0e0;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(15px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
