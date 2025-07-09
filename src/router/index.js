@@ -35,7 +35,7 @@ const routes = [
     path: '/admin/register',
     name: 'AdminRegister',
     component: AdminRegisterView,
-    meta: { requiresAuth: true }
+    meta: { guest: true }
   },
 
   // — Dashboard admin —
