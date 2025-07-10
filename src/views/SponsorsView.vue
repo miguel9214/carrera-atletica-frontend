@@ -6,8 +6,8 @@
       <p class="lead text-muted">Agradecemos a nuestros patrocinadores por hacer posible este evento.</p>
     </div>
 
-    <!-- Grid de tarjetas -->
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    <!-- Grid de tarjetas dinámico -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center">
       <div v-for="sponsor in sponsors" :key="sponsor.name" class="col">
         <div class="card h-100 shadow-sm sponsor-card border-0">
           <img
@@ -36,26 +36,25 @@
 <script setup>
 import { ref } from 'vue'
 
+/**
+ * Lista reactiva de patrocinadores.
+ * Cuando sólo haya uno, se centrará automáticamente;
+ * si agregas más, la rejilla los mostrará todos.
+ */
 const sponsors = ref([
   {
     name: 'HOTEL CALLE REAL',
     image: '/sponsors/hotelcallereal.jpg',
     description: 'Hotel con todas las comodidades para tu descanso antes y después de la carrera.',
     whatsapp: 'https://wa.me/message/4OLLNMWPF5GJF1'
-  },
-  {
-    name: 'Deportes Rápidos',
-    image: '/sponsors/deportes-rapidos.jpg',
-    description: 'Tienda especializada en calzado y equipamiento deportivo de alto rendimiento.',
-    whatsapp: 'https://wa.me/message/ABCD1234EFGH'
-  },
-  {
-    name: 'Salud y Bienestar',
-    image: '/sponsors/salud-bienestar.jpg',
-    description: 'Centro de bienestar integral con servicios de nutrición y fisioterapia.',
-    whatsapp: 'https://wa.me/message/ZYXW9876VUTS'
-  },
-  // …agrega más patrocinadores según necesites…
+  }
+  // Puedes añadir más objetos aquí con la misma estructura:
+  // {
+  //   name: 'Otro Patrocinador',
+  //   image: '/sponsors/otro.jpg',
+  //   description: 'Descripción breve...',
+  //   whatsapp: 'https://wa.me/message/XXXXX'
+  // }
 ])
 </script>
 
