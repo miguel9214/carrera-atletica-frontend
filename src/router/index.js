@@ -7,6 +7,7 @@ import KitView            from '@/views/KitView.vue'
 import CategoryView       from '@/views/CategoryView.vue'
 import RouteView          from '@/views/RouteView.vue'
 import NotFound           from '@/views/NotFound.vue'
+import SponsorsView       from '@/views/SponsorsView.vue'
 
 // Administración (ahora en views/admin/)
 import AdminLoginView     from '@/views/admin/LoginView.vue'
@@ -23,6 +24,7 @@ const routes = [
   { path: '/kit',         name: 'Kit',        component: KitView },
   { path: '/categorias',  name: 'Categories', component: CategoryView },
   { path: '/ruta',        name: 'Route',      component: RouteView },
+  {path: '/patrocinadores',name: 'Sponsors',component: SponsorsView},
 
   // — Admin (guest) —
   {

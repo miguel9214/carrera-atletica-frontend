@@ -1,9 +1,10 @@
 <template>
   <div class="container py-5">
+    <!-- Título -->
     <div class="text-center mb-5">
       <h2 class="fw-bold" style="color: var(--color-primary)">Kit del Participante</h2>
       <p class="lead text-muted">
-        Todo lo que necesitas para vivir la experiencia atletica. Calidad, utilidad y estilo en un solo paquete.
+        Todo lo que necesitas para vivir la experiencia atlética. Calidad, utilidad y estilo en un solo paquete.
       </p>
     </div>
 
@@ -25,27 +26,50 @@
         </div>
       </div>
     </div>
-
-    <!-- Imágenes grandes -->
+    <!-- Indumentaria para Hombre y Mujer -->
     <div class="row justify-content-center mt-5">
       <div class="col-lg-10">
         <div class="card border-0 shadow-sm p-4">
           <h4 class="text-center fw-bold mb-4" style="color: var(--color-dark)">
-            Elementos destacados del kit
+            Indumentaria Oficial
           </h4>
           <div class="row g-4">
             <div class="col-md-6 text-center">
-              <img src="/camiseta.jpg" alt="Camiseta oficial" class="img-fluid rounded shadow" />
-              <p class="mt-2 fw-semibold">Camiseta oficial de la carrera</p>
+              <img
+                src="/indumentaria-hombre.jpg"
+                alt="Indumentaria Hombre"
+                class="img-fluid rounded shadow"
+              />
+              <p class="mt-2 fw-semibold">Modelo Hombre</p>
             </div>
             <div class="col-md-6 text-center">
-              <img src="/tula.jpg" alt="Tula para hidratación" class="img-fluid rounded shadow" />
-              <p class="mt-2 fw-semibold">Tula para llevar tu hidratación</p>
+              <img
+                src="/indumentaria-mujer.jpg"
+                alt="Indumentaria Mujer"
+                class="img-fluid rounded shadow"
+              />
+              <p class="mt-2 fw-semibold">Modelo Mujer</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Elementos destacados -->
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm p-4">
+          <div class="row g-4">
+            <div class="col-md text-center">
+              <img src="/tula.jpg" alt="Tula para hidratación" class="img-fluid rounded shadow" />
+              <p class="mt-2 fw-semibold">Tula para llevar tu hidratación</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
 
     <!-- Botón de llamada a la acción -->
     <div class="text-center mt-5">
@@ -114,6 +138,12 @@ const kitItems = [
   justify-content: center;
   transition: background-color 0.3s;
 }
+
+.card img {
+  max-height: 280px;
+  object-fit: contain;
+}
+
 .btn-gradient {
   background: linear-gradient(90deg, var(--color-primary), var(--color-magenta));
   border: none;
@@ -121,9 +151,5 @@ const kitItems = [
 }
 .btn-gradient:hover {
   background: linear-gradient(90deg, var(--color-magenta), var(--color-primary));
-}
-img {
-  max-height: 280px;
-  object-fit: contain;
 }
 </style>

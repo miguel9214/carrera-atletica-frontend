@@ -39,6 +39,7 @@ const routes = [
   { label: 'Kit', to: '/kit' },
   { label: 'Categorías', to: '/categorias' },
   { label: 'Ruta', to: '/ruta' },
+  { label: 'Patrocinadores', to: '/patrocinadores' },
 ]
 
 function closeMenu() {
