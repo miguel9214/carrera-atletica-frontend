@@ -35,6 +35,9 @@
   </div>
 </template>
 
+
+
+// src/views/admin/LoginView.vue
 <script setup>
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
@@ -46,27 +49,37 @@ const form = reactive({ email: '', password: '' })
 
 async function handleLogin() {
   try {
+    // 1) Llamada al login
     const data = await useApi('admin/login', 'POST', {
       email: form.email,
       password: form.password,
     })
+    console.log('Login successful:', data)
+
+    // 2) Almaceno el token bajo la clave que usa useApi
     localStorage.setItem('access_token', data.token)
-    Swal.fire({
+
+    // 3) Muestro alerta y, al cerrarse, redirijo a Home
+    await Swal.fire({
       icon: 'success',
       title: '¡Bienvenido!',
-      timer: 1200,
-      showConfirmButton: false
+      showConfirmButton: false,
+      timer: 1200
     })
-    router.push({ name: 'AdminDashboard' })
+
+    // 4) Navego al Home público
+    router.push({ name: 'AdminHome' })
   } catch (err) {
+    console.error('Login error:', err)
     Swal.fire({
       icon: 'error',
       title: 'Error de autenticación',
-      text: err.error || 'Credenciales inválidas',
+      text: err.error || 'Credenciales inválidas'
     })
   }
 }
 </script>
+
 
 <style scoped>
 .btn-gradient {
