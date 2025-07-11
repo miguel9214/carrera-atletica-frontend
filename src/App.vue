@@ -1,13 +1,13 @@
 <template>
   <div class="app-wrapper d-flex flex-column min-vh-100">
-    <!-- Sólo muestro el Navbar si la ruta NO es de guest -->
-    <Navbar v-if="!isGuestRoute" />
+    <!-- Sólo en rutas públicas -->
+    <Navbar v-if="showNavFooter" />
 
     <main class="flex-fill">
       <RouterView />
     </main>
 
-    <!-- Botón flotante de WhatsApp -->
+    <!-- Botón flotante de WhatsApp siempre -->
     <a
       href="https://wa.me/573132709958"
       target="_blank"
@@ -18,9 +18,9 @@
       <i class="bi bi-whatsapp fs-2"></i>
     </a>
 
-    <!-- Sólo muestro el Footer si la ruta NO es de guest -->
+    <!-- Sólo en rutas públicas -->
     <Transition name="fade-slide" appear>
-      <Footer v-if="!isGuestRoute" />
+      <Footer v-if="showNavFooter" />
     </Transition>
   </div>
 </template>
@@ -31,9 +31,13 @@ import { useRoute } from 'vue-router'
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 
-// Detecto si la ruta actual tiene meta.guest = true
 const route = useRoute()
-const isGuestRoute = computed(() => !!route.meta.guest)
+
+// Oculta Nav/Footer en /admin/* o rutas meta.guest
+const showNavFooter = computed(() => {
+  if (route.meta.guest) return false
+  return !route.path.startsWith('/admin')
+})
 </script>
 
 <style scoped>
@@ -45,7 +49,7 @@ const isGuestRoute = computed(() => !!route.meta.guest)
   transform: translateY(20px);
 }
 
-/* Estilos para el botón flotante */
+/* Botón flotante WhatsApp */
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
